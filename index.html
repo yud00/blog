@@ -3,25 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Simple SEO blog on GitHub Pages">
+  <meta name="description" content="Simple modern SEO blog">
   <title>My Blog</title>
   <style>
-    body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
-    h1 { color: #333; }
-    ul { padding-left: 1.5rem; }
-    a { text-decoration: none; color: #0066cc; }
-    a:hover { text-decoration: underline; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .post {
+      display: flex;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .post:hover {
+      transform: scale(1.02);
+    }
+
+    .thumb {
+      width: 120px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-content {
+      padding: 1rem;
+    }
+
+    .post-content h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .post-content a {
+      text-decoration: none;
+      color: #0077cc;
+    }
+
+    .post-content a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <h1>My Blog</h1>
-  <p>Welcome! Here are my latest posts:</p>
-  <ul>
-    <li><a href="posts/blog1.html">✅ How to Market an HVAC Business</a></li>
-    <li><a href="posts/blog2.html">📈 Top 5 Free SEO Tools for 2024</a></li>
-    <li><a href="posts/blog3.html">🚀 How to Get SEO Clients for Free</a></li>
+  <p style="text-align: center;">SEO Tips & Growth Strategies</p>
 
-    <!-- Add more blog posts manually here -->
-  </ul>
+  <!-- Blog Post 1 -->
+  <div class="post">
+    <img class="thumb" src="https://via.placeholder.com/120x100.png?text=HVAC" alt="HVAC" />
+    <div class="post-content">
+      <h2><a href="posts/blog1.html">✅ How to Market an HVAC Business</a></h2>
+    </div>
+  </div>
+
+  <!-- Blog Post 2 -->
+  <div class="post">
+    <img class="thumb" src="https://via.placeholder.com/120x100.png?text=SEO" alt="SEO" />
+    <div class="post-content">
+      <h2><a href="posts/blog2.html">📈 Top 5 Free SEO Tools for 2024</a></h2>
+    </div>
+  </div>
+
+  <!-- Blog Post 3 -->
+  <div class="post">
+    <img class="thumb" src="https://via.placeholder.com/120x100.png?text=Clients" alt="Clients" />
+    <div class="post-content">
+      <h2><a href="posts/blog3.html">🚀 How to Get SEO Clients for Free</a></h2>
+    </div>
+  </div>
+
+  <!-- Add more posts below as needed -->
 </body>
 </html>
