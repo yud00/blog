@@ -3,92 +3,525 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Simple modern SEO blog">
-  <title>My Blog</title>
+  <meta name="description" content="Expert SEO tips and growth strategies to boost your online presence. Learn how to market your business, find free SEO tools, and acquire clients.">
+  <meta name="keywords" content="SEO, marketing, growth strategies, HVAC marketing, free SEO tools, get SEO clients">
+  <meta name="author" content="My Blog">
+  <meta property="og:title" content="My Blog | SEO Tips & Growth Strategies">
+  <meta property="og:description" content="Expert SEO tips and growth strategies to boost your online presence">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourblogdomain.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>My Blog | SEO Tips & Growth Strategies</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #3f37c9;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --success: #4cc9f0;
+      --warning: #f8961e;
+      --danger: #f72585;
+      --radius: 12px;
+      --shadow: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-hover: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7ff;
+      color: var(--dark);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease-in-out;
     }
 
     h1 {
-      text-align: center;
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
     }
 
-    .post {
-      display: flex;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--gray);
       margin-bottom: 1.5rem;
+    }
+
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      border: 1px solid #e0e0e0;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background: linear-gradient(90deg, var(--primary-dark), var(--secondary));
+      transform: translateY(-2px);
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow: hidden;
-      transition: transform 0.2s ease;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    .post:hover {
-      transform: scale(1.02);
+    .post-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
     }
 
-    .thumb {
-      width: 120px;
-      height: 100%;
+    .post-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .post-thumb {
+      width: 100%;
+      height: 200px;
       object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .post-card:hover .post-thumb {
+      transform: scale(1.05);
     }
 
     .post-content {
-      padding: 1rem;
+      padding: 1.5rem;
     }
 
-    .post-content h2 {
-      margin: 0;
-      font-size: 1.2rem;
+    .post-category {
+      display: inline-block;
+      background-color: #e9ecef;
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
     }
 
-    .post-content a {
+    .post-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .post-title a {
+      color: var(--dark);
       text-decoration: none;
-      color: #0077cc;
+      transition: color 0.3s ease;
     }
 
-    .post-content a:hover {
-      text-decoration: underline;
+    .post-title a:hover {
+      color: var(--primary);
+    }
+
+    .post-excerpt {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .post-date {
+      margin-right: 1rem;
+    }
+
+    .read-time {
+      display: flex;
+      align-items: center;
+    }
+
+    .read-time svg {
+      margin-right: 0.3rem;
+    }
+
+    .featured-post {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 3rem;
+    }
+
+    .featured-post .post-thumb {
+      height: 100%;
+    }
+
+    .featured-content {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-post .post-category {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .featured-post .post-title {
+      font-size: 2rem;
+    }
+
+    .newsletter {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 3rem;
+      border-radius: var(--radius);
+      color: white;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .newsletter h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter p {
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: var(--radius) 0 0 var(--radius);
+      font-size: 1rem;
+    }
+
+    .newsletter-btn {
+      background-color: var(--dark);
+      color: white;
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      background-color: #2a2a3c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+      margin: 0 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .posts-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .featured-post {
+        grid-template-columns: 1fr;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-input {
+        border-radius: var(--radius) var(--radius) 0 0;
+      }
+      
+      .newsletter-btn {
+        border-radius: 0 0 var(--radius) var(--radius);
+        padding: 1rem;
+      }
+    }
+
+    /* Micro-interactions */
+    .post-card:hover .post-title a {
+      color: var(--primary);
+    }
+
+    .post-card:hover .post-category {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Schema markup in CSS for visual cues */
+    [itemtype="http://schema.org/BlogPosting"] {
+      border-left: 4px solid var(--primary);
     }
   </style>
 </head>
-<body>
-  <h1>My Blog</h1>
-  <p style="text-align: center;">SEO Tips & Growth Strategies</p>
+<body itemscope itemtype="http://schema.org/Blog">
+  <div class="container">
+    <header>
+      <h1 itemprop="name">My SEO Blog</h1>
+      <p class="subtitle">Expert tips and growth strategies to boost your online presence</p>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search for articles..." aria-label="Search articles">
+        <button class="search-btn">Search</button>
+      </div>
+    </header>
 
-  <!-- Blog Post 1 -->
-  <div class="post">
-    <img class="thumb" src="https://via.placeholder.com/120x100.png?text=HVAC" alt="HVAC" />
-    <div class="post-content">
-      <h2><a href="posts/blog1.html">✅ How to Market an HVAC Business</a></h2>
-    </div>
+    <main>
+      <!-- Featured Post -->
+      <div class="post-card featured-post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-thumb-container">
+          <img class="post-thumb" src="https://github.com/yud00/blog/blob/main/images/seo.png?raw=true" alt="SEO Strategies" itemprop="image">
+        </div>
+        <div class="featured-content">
+          <span class="post-category" itemprop="articleSection">Featured</span>
+          <h2 class="post-title" itemprop="headline">
+            <a href="posts/blog2.html" itemprop="url">📈 Top 5 Free SEO Tools for 2024</a>
+          </h2>
+          <p class="post-excerpt" itemprop="description">Discover the most powerful free SEO tools that can help you analyze, optimize, and rank your website without spending a dime.</p>
+          <div class="post-meta">
+            <span class="post-date" itemprop="datePublished" content="2024-01-15">January 15, 2024</span>
+            <span class="read-time" itemprop="timeRequired">5 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regular Posts Grid -->
+      <div class="posts-grid">
+        <!-- Post 1 -->
+        <div class="post-card" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+          <img class="post-thumb" src="https://via.placeholder.com/600x400.png?text=HVAC" alt="HVAC Marketing" itemprop="image">
+          <div class="post-content">
+            <span class="post-category" itemprop="articleSection">Marketing</span>
+            <h2 class="post-title" itemprop="headline">
+              <a href="posts/blog1.html" itemprop="url">✅ How to Market an HVAC Business</a>
+            </h2>
+            <p class="post-excerpt" itemprop="description">Proven strategies to grow your HVAC business online and attract more local customers through effective digital marketing.</p>
+            <div class="post-meta">
+              <span class="post-date" itemprop="datePublished" content="2024-01-10">January 10, 2024</span>
+              <span class="read-time" itemprop="timeRequired">7 min read</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="post-card" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+          <img class="post-thumb" src="https://via.placeholder.com/600x400.png?text=Clients" alt="SEO Clients" itemprop="image">
+          <div class="post-content">
+            <span class="post-category" itemprop="articleSection">Business</span>
+            <h2 class="post-title" itemprop="headline">
+              <a href="posts/blog3.html" itemprop="url">🚀 How to Get SEO Clients for Free</a>
+            </h2>
+            <p class="post-excerpt" itemprop="description">Learn unconventional methods to acquire high-paying SEO clients without spending money on advertising or cold outreach.</p>
+            <div class="post-meta">
+              <span class="post-date" itemprop="datePublished" content="2024-01-05">January 5, 2024</span>
+              <span class="read-time" itemprop="timeRequired">6 min read</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="post-card" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+          <img class="post-thumb" src="https://via.placeholder.com/600x400.png?text=Keywords" alt="Keyword Research" itemprop="image">
+          <div class="post-content">
+            <span class="post-category" itemprop="articleSection">Research</span>
+            <h2 class="post-title" itemprop="headline">
+              <a href="posts/blog4.html" itemprop="url">🔍 Advanced Keyword Research Techniques</a>
+            </h2>
+            <p class="post-excerpt" itemprop="description">Go beyond basic keyword research with these advanced techniques to uncover hidden opportunities your competitors are missing.</p>
+            <div class="post-meta">
+              <span class="post-date" itemprop="datePublished" content="2023-12-28">December 28, 2023</span>
+              <span class="read-time" itemprop="timeRequired">8 min read</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 4 -->
+        <div class="post-card" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+          <img class="post-thumb" src="https://via.placeholder.com/600x400.png?text=Content" alt="Content Strategy" itemprop="image">
+          <div class="post-content">
+            <span class="post-category" itemprop="articleSection">Content</span>
+            <h2 class="post-title" itemprop="headline">
+              <a href="posts/blog5.html" itemprop="url">✍️ Content Strategy That Ranks</a>
+            </h2>
+            <p class="post-excerpt" itemprop="description">Build a content strategy that actually gets traffic by focusing on these key elements that search engines love.</p>
+            <div class="post-meta">
+              <span class="post-date" itemprop="datePublished" content="2023-12-20">December 20, 2023</span>
+              <span class="read-time" itemprop="timeRequired">5 min read</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="newsletter">
+        <h2>Get SEO Tips Direct to Your Inbox</h2>
+        <p>Join our newsletter and receive weekly insights, case studies, and actionable SEO strategies to grow your business.</p>
+        <form class="newsletter-form" action="#" method="POST">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email address">
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+        </a>
+      </div>
+      <p>&copy; 2024 My SEO Blog. All rights reserved.</p>
+    </footer>
   </div>
 
-  <!-- Blog Post 2 -->
-  <div class="post">
-<img class="thumb" src="https://github.com/yud00/blog/blob/main/images/seo.png?raw=true" alt="SEO" />
-    <div class="post-content">
-      <h2><a href="posts/blog2.html">📈 Top 5 Free SEO Tools for 2024</a></h2>
-    </div>
-  </div>
-
-  <!-- Blog Post 3 -->
-  <div class="post">
-    <img class="thumb" src="https://via.placeholder.com/120x100.png?text=Clients" alt="Clients" />
-    <div class="post-content">
-      <h2><a href="posts/blog3.html">🚀 How to Get SEO Clients for Free</a></h2>
-    </div>
-  </div>
-
-  <!-- Add more posts below as needed -->
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "My SEO Blog",
+      "url": "https://yourblogdomain.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourblogdomain.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "My SEO Blog",
+      "url": "https://yourblogdomain.com",
+      "logo": "https://yourblogdomain.com/logo.png",
+      "sameAs": [
+        "https://twitter.com/yourblog",
+        "https://www.linkedin.com/company/yourblog",
+        "https://www.facebook.com/yourblog"
+      ]
+    }
+  </script>
 </body>
 </html>
